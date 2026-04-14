@@ -1,0 +1,97 @@
+:root {
+  --bg: #f5f5ef;
+  --card: #ffffff;
+  --text: #1f2a24;
+  --muted: #617066;
+  --accent: #1f8a5b;
+  --accent-strong: #126642;
+  --line: #d8e0d7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #fff7d1 0%, var(--bg) 48%);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.app-shell {
+  width: min(96vw, 440px);
+}
+
+.calculator-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(31, 42, 36, 0.12);
+}
+
+h1 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 8px 0 20px;
+  color: var(--muted);
+}
+
+.display-wrap {
+  margin-bottom: 16px;
+}
+
+#expression {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  font-size: 18px;
+}
+
+#result {
+  margin-top: 10px;
+  font-size: 16px;
+  min-height: 20px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafcfb;
+  color: var(--text);
+  font-size: 18px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #9fb3a3;
+}
+
+button.accent {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+button.accent:hover {
+  background: var(--accent-strong);
+}
+
+button.muted {
+  background: #eef2ee;
+}
