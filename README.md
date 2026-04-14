@@ -40,3 +40,7 @@ The `Jenkinsfile` orchestrates the following stages:
 - Pipeline job configured from this repository
 
 After a successful run, the app is available at http://<jenkins-agent-host>:5000
+
+## UI Snapshot
+
+![Calculator UI](docs/screenshots/calculator-ui.png)

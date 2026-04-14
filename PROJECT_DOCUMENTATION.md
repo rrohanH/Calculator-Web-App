@@ -132,3 +132,9 @@ Optional:
 - Add stage for security scanning
 - Add integration tests for API endpoints
 - Parameterize port and container name via Jenkins build parameters
+
+## 13. Snapshots
+
+### Calculator UI
+
+![Calculator UI](docs/screenshots/calculator-ui.png)
