@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f "$TEST_CONTAINER" >/dev/null 2>&1 || true
-                    docker run --name "$TEST_CONTAINER" -e PYTHONPATH=/app "$IMAGE_REF" pytest -q
+                    docker run --name "$TEST_CONTAINER" "$IMAGE_REF" python -m pytest -q
                 '''
             }
             post {
