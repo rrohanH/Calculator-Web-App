@@ -9,16 +9,19 @@ app = Flask(__name__)
 
 @app.get("/")
 def index():
+    # Serve the single-page calculator UI.
     return render_template("index.html")
 
 
 @app.get("/health")
 def health():
+    # Lightweight endpoint used by Jenkins and Docker smoke checks.
     return jsonify({"status": "ok"}), 200
 
 
 @app.post("/api/calculate")
 def calculate():
+    # Read the submitted expression and evaluate it safely on the server.
     payload = request.get_json(silent=True) or {}
     expression = payload.get("expression", "")
 
@@ -30,4 +33,5 @@ def calculate():
 
 
 if __name__ == "__main__":
+    # Local development entry point.
     app.run(host="0.0.0.0", port=5000)

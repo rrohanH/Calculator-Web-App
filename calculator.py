@@ -46,11 +46,13 @@ def evaluate_expression(expression: str) -> float:
 
 
 def _eval_node(node: ast.AST) -> float:
+    # Numeric literals are allowed directly.
     if isinstance(node, ast.Constant):
         if isinstance(node.value, (int, float)):
             return float(node.value)
         raise CalculatorError("Only numeric values are allowed.")
 
+    # Binary operations are limited to a safe whitelist of operators.
     if isinstance(node, ast.BinOp):
         op_type = type(node.op)
         if op_type not in _ALLOWED_BINARY_OPERATORS:
@@ -59,10 +61,12 @@ def _eval_node(node: ast.AST) -> float:
         right = _eval_node(node.right)
         return _ALLOWED_BINARY_OPERATORS[op_type](left, right)
 
+    # Unary + and - are the only supported unary operators.
     if isinstance(node, ast.UnaryOp):
         op_type = type(node.op)
         if op_type not in _ALLOWED_UNARY_OPERATORS:
             raise CalculatorError("Unary operator is not supported.")
         return _ALLOWED_UNARY_OPERATORS[op_type](_eval_node(node.operand))
 
+    # Anything else is rejected to avoid executing arbitrary Python.
     raise CalculatorError("Unsupported expression.")
